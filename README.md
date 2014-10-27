@@ -108,6 +108,7 @@ branch.commit({
         name: 'Steven Demonstration',
         email: 'sdemonstration@invalid'
     },
+    message: 'Some new files.',
     keepParentFiles: false
 });
 ```
@@ -122,6 +123,7 @@ It takes the following named arguments:
 * ``committer``: an object of the same structure as ``author``, used to
   produce the committer attribution on the commit. This property is optional
   and defaults to the same object provided for ``author``.
+* ``message``: the commit message. Must be a string and must be non-empty.
 * ``keepParentFiles`` chooses whether the new commit will include any files
   from the parent commit that were not 'overwritten' by files added to the
   stream. This is an optional parameter and it defaults to ``true``.
