@@ -1,0 +1,9 @@
+{
+    "name": "vinyl-git",
+    "version": "0.0.0dev",
+    "description": "Vinyl adapter for git repo commits",
+    "repository": "https://github.com/apparentlymart/vinyl-git",
+    "dependencies": {
+        "nodegit": "~0.1.4"
+    }
+}
