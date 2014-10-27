@@ -9,6 +9,9 @@ function treeSrc(stream, tree, patterns) {
 
     var walker = tree.walk();
 
+    var inProgress = false;
+    var done = false;
+
     walker.on('entry', function (entry) {
 
         var entryPath = entry.path();
@@ -29,6 +32,7 @@ function treeSrc(stream, tree, patterns) {
             return;
         }
 
+        inProgress = true;
         entry.getBlob(function (err, blob) {
             if (err) {
                 stream.emit('error', err);
@@ -47,8 +51,23 @@ function treeSrc(stream, tree, patterns) {
             });
 
             stream.push(file);
+            if (done) {
+                stream.end();
+            }
+            inProgress = false;
         });
 
+    });
+
+    walker.on('error', function (err) {
+        stream.emit('error', err);
+    });
+
+    walker.on('end', function () {
+        done = true;
+        if (! inProgress) {
+            stream.end();
+        }
     });
 
     walker.start();
