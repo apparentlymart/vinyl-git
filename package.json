@@ -3,7 +3,12 @@
     "version": "0.0.0dev",
     "description": "Vinyl adapter for git repo commits",
     "repository": "https://github.com/apparentlymart/vinyl-git",
+    "main": "./index.js",
     "dependencies": {
-        "nodegit": "~0.1.4"
+        "nodegit": "0.1.4",
+        "bluebird": "~2.3.6",
+        "minimatch": "~1.0.0",
+        "through2": "0.6.3",
+        "vinyl": "0.4.3"
     }
 }
