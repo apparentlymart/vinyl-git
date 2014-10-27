@@ -21,11 +21,11 @@ function git(repoPath) {
     });
 
     repo.branch = function branch(name) {
-        return new Branch(repo, name);
+        return new Branch(repo, Promise.resolve(name));
     };
 
-    repo.commit = function commit(name) {
-        return new Commit(repo, name);
+    repo.commit = function commit(id) {
+        return new Commit(repo, Promise.resolve(id));
     };
 
     repo.rawRepoPromise = rawRepoPromise;
