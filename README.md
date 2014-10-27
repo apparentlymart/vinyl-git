@@ -68,14 +68,13 @@ objects:
 ```js
 var branch = repo.branch('master');
 var commit = repo.commit('abcd1234');
-var tag = repo.tag('v0.0.1');
 var index = repo.index();
 ```
 
 * ``branch`` returns an adapter that can be both a source (with ``src``) *and*
   a destination (with ``commit``).
-* ``commit`` and ``tag`` both return adapters that can only be used as sources,
-  with ``src``.
+* ``commit`` returns an adapter that can only be used as a source, with
+  ``src``.
 * ``index`` returns an adapter that behaves more like a standard ``vinyl-fs``,
   with ``src`` reading from the index and ``dest`` writing back to it, with
   changes visible immediately.
@@ -146,7 +145,7 @@ This adapter is mainly useful for implementing git pre-commit hooks, which
 have an opportunity to read and modify the index before the commit is
 created.
 
-#### Traversing History (Commit/Branch/Tag Adapters)
+#### Traversing History (Commit/Branch Adapters)
 
 ```js
 commit.parent(1)
